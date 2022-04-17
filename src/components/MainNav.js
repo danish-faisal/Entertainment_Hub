@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import { Movie, Whatshot, Tv, Search } from '@material-ui/icons';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -17,6 +18,15 @@ const useStyles = makeStyles({
 export default function MainNav() {
     const classes = useStyles();
     const [value, setValue] = React.useState(0);
+    let navigate = useNavigate();
+
+    useEffect(() => {
+        if (value === 0) navigate("/")
+        else if (value === 1) navigate("/movies")
+        else if (value === 2) navigate("/series")
+        else if (value === 3) navigate("/search")
+
+    }, [value, navigate]);
 
     return (
         <BottomNavigation
