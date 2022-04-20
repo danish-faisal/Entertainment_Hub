@@ -8,6 +8,7 @@ import { img_500, unavailable, unavailableLandscape } from '../../config/config'
 import "./MoreInfoModal.css";
 import { Button } from "@material-ui/core";
 import YouTubeIcon from "@material-ui/icons/YouTube";
+import Carousel from '../Carousel/Carousel';
 
 const useStyles = makeStyles((theme) => ({
     modal: {
@@ -42,7 +43,16 @@ export default function MoreInfoModal({ media_type, id, children }) {
     const fetchVideo = async () => {
         const { data } = await axios.get(`https://api.themoviedb.org/3/${media_type}/${id}/videos?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
 
-        setVideo(data.results[0]?.key);
+        let videoKey = "";
+        if (data.results.length > 0) {
+            for (let idx in data.results) {
+                if (data.results[idx].name === "Official Trailer") {
+                    videoKey = data.results[idx].key;
+                    break;
+                }
+            }
+        }
+        setVideo(videoKey);
     }
 
     useEffect(() => {
@@ -120,6 +130,10 @@ export default function MoreInfoModal({ media_type, id, children }) {
                                     <span className="ContentModal__description">
                                         {reqData.overview}
                                     </span>
+
+                                    <div>
+                                        <Carousel media_type={media_type} id={id} />
+                                    </div>
 
                                     <Button
                                         variant="contained"
