@@ -35,7 +35,7 @@ const Series = () => {
                     <CardDisplay key={show.id}
                         id={show.id}
                         poster={show.poster_path}
-                        media_type={show.media_type}
+                        media_type="tv"
                         vote_average={show.vote_average}
                         title={show.title || show.name}
                         date={show.release_date || show.first_air_date} />

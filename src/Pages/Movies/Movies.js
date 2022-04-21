@@ -35,7 +35,7 @@ const Movies = () => {
                     <CardDisplay key={movie.id}
                         id={movie.id}
                         poster={movie.poster_path}
-                        media_type={movie.media_type}
+                        media_type="movie"
                         vote_average={movie.vote_average}
                         title={movie.title || movie.name}
                         date={movie.release_date || movie.first_air_date} />

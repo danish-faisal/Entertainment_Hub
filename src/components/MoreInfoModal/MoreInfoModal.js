@@ -52,7 +52,8 @@ export default function MoreInfoModal({ media_type, id, children }) {
                 }
             }
         }
-        setVideo(videoKey);
+        if (videoKey === "") videoKey = data.results[0]?.key;
+        setVideo(!videoKey ? "" : videoKey);
     }
 
     useEffect(() => {
