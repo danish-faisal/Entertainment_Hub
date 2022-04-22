@@ -1,6 +1,12 @@
-# Getting Started with Create React App
+# Project Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Entertainment Hub is a website to explore movies & tv/web series using search and genres
+
+Built using React, Material UI and TMDB API
+
+Live: https://entertainmenthub-react-mui.netlify.app/
+
+Kind of an upgraded react version of https://danish-faisal.github.io/movieinfo/
 
 ## Available Scripts
 
